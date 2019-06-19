@@ -75,7 +75,7 @@ MyContainer container = (Mycontainer) myMachine.getContainer();
 container.save(new File("my_container"));
 ~~~
 
-### CMD-tools
+### Command-line tools
 You can use HQUtil to generate auth info for any stateless method to use.
 Just use with these flags:
 ~~~
