@@ -1,2 +1,3 @@
 Manifest-Version: 1.0
+Created-By: Labunsky
 Main-Class: info.labunsky.stego.auth.SpyUtil
