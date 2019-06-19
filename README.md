@@ -92,4 +92,4 @@ Available flags are:
 ~~~
 
 ## License
-[Simplified BSD](LICENCE.md)
+[Simplified BSD](LICENCE)
