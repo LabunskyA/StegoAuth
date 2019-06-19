@@ -1,8 +1,8 @@
 # StegoAuth
-Set of utilities and API to proof the concept of asymmetric steganographic authentication, written in Java. I will link more info in near future
+Set of utilities and API to proof the concept of asymmetric steganographic authentication, written in Java. I will link more info in the nearest future.
 
 ## Building
-Artifacts available at the releases page, but you can also build everything with simple `make`. Note that you will need to have JDK (`javac` and `jar` in particular) in your path.
+Artifacts available at the releases page, but you can also build everything with simple `make`. Note that you will need to have JDK in your PATH variable.
 
 ## Usage
 ### Protocol
@@ -79,16 +79,16 @@ container.save(new File("my_container"));
 You can use HQUtil to generate auth info for any stateless method to use.
 Just use with these flags:
 ~~~
-    -ex [message size in bytes] [indices bound] - generate extract sequence
-    -em [message] OPTIONAL: [trash/message bits ratio] [indices bound] - generate embed sequence from Ex in stdin
-    -h - calculate hash from stdin
+-ex [message size in bytes] [indices bound] - generate extract sequence
+-em [message] OPTIONAL: [trash/message bits ratio] [indices bound] - generate embed sequence from Ex in stdin
+-h - calculate hash from stdin
 ~~~ 
 
 SpyUtil used to use generated sequences in the field.
 Available flags are:
 ~~~
-     -e [container] - execute sequence from stdin
-     -ch [hash path] [message] - check message hash
+-e [container] - execute sequence from stdin
+-ch [hash path] [message] - check message hash
 ~~~
 
 ## License
