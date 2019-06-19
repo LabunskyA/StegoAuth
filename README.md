@@ -2,10 +2,10 @@
 Set of utilities and API to proof the concept of asymmetric steganographic authentication, written in Java. I will link more info in the nearest future.
 
 ## Building
-Artifacts available at the releases page, but you can also build everything with simple `make`. Note that you will need to have JDK in your PATH variable.
+Artifacts available at the [releases](https://github.com/LabunskyA/StegoAuth/releases) page, but you can also build everything with simple `make`. Note that you will need to have JDK in your PATH variable.
 
 ## Usage
-### Protocol
+### The protocol
 Let Trent be the headquarters, Alice and Bob - agents. Authentication protocol consists of two phases.
 
 Generating auth info beforehand:
