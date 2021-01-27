@@ -1,33 +1,33 @@
 # StegoAuth
-Set of utilities and API to proof the concept of asymmetric steganographic authentication, written in Java. I will link more info in the nearest future.
+Set of utilities and an API as of proof the concept for asymmetric steganographic authentication written in Java.
 
 ## Building
-Artifacts available at the [releases](https://github.com/LabunskyA/StegoAuth/releases) page, but you can also build everything with simple `make`. Note that you will need to have JDK in your PATH variable.
+Artifacts available at the [releases](https://github.com/LabunskyA/StegoAuth/releases) page, but one can also build everything with a simple `make`. Note that you will need to have JDK 8+ in your PATH variable.
 
 ## Usage
 ### The protocol
-Let Trent be the headquarters, Alice and Bob - agents. Authentication protocol consists of two phases.
+Let Trent be the headquarters, Alice and Bob - agents. The authentication protocol divided into two phases.
 
-Generating auth info beforehand:
-- T: chooses secret algorithm and a key, with them generates:
-  - extract sequence *Ex*;
-  - suitable authentication context *Ctx*;
+Generating authintification information beforehand:
+- T: chooses a secret algorithm and a key, with them generates:
+  - an extract sequence *Ex*;
+  - a suitable authentication context *Ctx*;
 - T -> A: *Ctx, Ex*;
-- T: using *Ex* and created context:
-  - message *M* with *|Ex|* parts in it;
-  - one-time *Em*, open sequence, shuffling indices from *Ex*;
+- T: using *Ex* and the created context:
+  - a message *M* with *|Ex|* parts in it;
+  - an open one-time *Em* sequence by shuffling indices within *Ex*;
 - T -> B: *Em, h(M)*.
 
-Agent authentication if the field works like this:
-- A -> B: initializing message *IM* based on *Ctx* with container description in it;
+Agent authentication works like this:
+- A -> B: an initializing message *IM* based on *Ctx* with a container description in it;
 - B: chooses suitable *C ~ IM*;
 - B -> A: *C' = Em(C)*;
 - A: checks if *C' ~ IM*;
 - A -> B: *M' = Ex(C')*, mark M' as used;
-- B: checks if *h(M') == h(M)*, destroying *Em, h(M)*.
+- B: checks if *h(M') == h(M)*, destroys *Em, h(M)*.
 
 ### API
-To create your own steganography authentification method for the protocol, you will need to implement a couple of interfaces:
+To create your own steganography authentification method for the protocol you will need to implement a couple of interfaces:
 ~~~java
 class MyContainer implements StegoContainer<MyElement> {
     public MyElement get(int i) {
@@ -51,7 +51,7 @@ final StegoExtract myExtract = (st, el) -> {
 };
 ~~~
 
-And use them with generic `StegoMachine`:
+And use them with a generic `StegoMachine`:
 ~~~java
 StegoMachine<MyState, MyElement> myMachine = new StegoMachine(
     initialState, new MyContainer<MyElement>(/* loading container */)
@@ -76,15 +76,15 @@ container.save(new File("my_container"));
 ~~~
 
 ### Command-line tools
-You can use HQUtil to generate auth info for any stateless method to use.
-Just use with these flags:
+Use HQUtil to generate auth info for any stateless method to use.
+Just call it with these flags:
 ~~~
 -ex [message size in bytes] [indices bound] - generate extract sequence
 -em [message] OPTIONAL: [trash/message bits ratio] [indices bound] - generate embed sequence from Ex in stdin
 -h - calculate hash from stdin
 ~~~ 
 
-SpyUtil used to use generated sequences in the field.
+SpyUtil is used to work with generated sequences in the field.
 Available flags are:
 ~~~
 -e [container] - execute sequence from stdin
